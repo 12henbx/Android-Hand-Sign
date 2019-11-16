@@ -39,11 +39,7 @@ public class MainActivity extends AppCompatActivity {
         thread.start();
 //        Client client = new Client("10.42.0.1",50001);
         Log.i("test","welll1");
-        show_text = findViewById(R.id.show_text);
-
-//        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-//        WifiInfo wInfo = wifiManager.getConnectionInfo();
-//        String macAddress = wInfo.getMacAddress();
+        //show_text = findViewById(R.id.show_text);
 
     }
 

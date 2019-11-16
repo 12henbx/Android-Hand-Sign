@@ -1,6 +1,9 @@
 package com.example.handsignserver;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -11,16 +14,25 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class Client {
+public class Client extends AppCompatActivity {
     private Socket socket            = null;
     private DataInputStream input   = null;
     private DataOutputStream out     = null;
     private BufferedReader in   = null;
     TextView show_text;
+    ImageView img_view;
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//
+//    }
 
     // constructor to put ip address and port
     public Client(String address, int port)
     {
+        show_text = findViewById(R.id.show_text);
+        img_view = findViewById(R.id.img_view);
         Log.i("test","welll2");
         // establish a connection
         try
@@ -58,9 +70,19 @@ public class Client {
 
                     line = in.readLine();
                     line = line;
-                    out.writeUTF(line+ "bla");
+                    out.writeUTF(line);
                     Log.i("test",line);
-                    //show_text
+                    show_text.setText(line);
+                    if(line == "stop"){
+                        img_view.setImageResource(R.drawable.stop_sign);
+                    }else if(line == "thumbs"){
+                        img_view.setImageResource(R.drawable.thumbsup);
+                    }
+                    else if (line == "peace") {
+                        img_view.setImageResource(R.drawable.peace_hand_sign);
+                    }else if (line == "punch"){
+                        img_view.setImageResource(R.drawable.punch_fist);
+                    }
                 }
                 catch(IOException i)
                 {
