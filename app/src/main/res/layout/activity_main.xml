@@ -13,9 +13,16 @@
         android:text="Hello World!"/>
 
     <ImageView
+        android:layout_below="@+id/show_text"
         android:id="@+id/img_view"
+        android:layout_width="400dp"
+        android:layout_height="400dp"/>
+    <Button
+        android:id="@+id/btnListener"
+        android:layout_below="@+id/img_view"
+        android:layout_marginTop="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"/>
+        android:text="Show"/>
 
 </RelativeLayout>

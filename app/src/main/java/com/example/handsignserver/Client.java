@@ -11,16 +11,17 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class Client extends AppCompatActivity {
+public class Client {
     private Socket socket            = null;
     private DataInputStream input   = null;
     private DataOutputStream out     = null;
     private BufferedReader in   = null;
-    TextView show_text;
-    ImageView img_view;
+    //TextView show_text;
+    //ImageView img_view;
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
@@ -31,8 +32,8 @@ public class Client extends AppCompatActivity {
     // constructor to put ip address and port
     public Client(String address, int port)
     {
-        show_text = findViewById(R.id.show_text);
-        img_view = findViewById(R.id.img_view);
+        //show_text = findViewById(R.id.show_text);
+        //img_view = findViewById(R.id.img_view);
         Log.i("test","welll2");
         // establish a connection
         try
@@ -67,22 +68,22 @@ public class Client extends AppCompatActivity {
                 try
                 {
                     Log.i("test","hmhm");
-
                     line = in.readLine();
-                    line = line;
+
+
                     out.writeUTF(line);
                     Log.i("test",line);
-                    show_text.setText(line);
-                    if(line == "stop"){
-                        img_view.setImageResource(R.drawable.stop_sign);
-                    }else if(line == "thumbs"){
-                        img_view.setImageResource(R.drawable.thumbsup);
-                    }
-                    else if (line == "peace") {
-                        img_view.setImageResource(R.drawable.peace_hand_sign);
-                    }else if (line == "punch"){
-                        img_view.setImageResource(R.drawable.punch_fist);
-                    }
+//                    show_text.setText(line);
+//                    if(line == "stop"){
+//                        img_view.setImageResource(R.drawable.stop_sign);
+//                    }else if(line == "thumbs"){
+//                        img_view.setImageResource(R.drawable.thumbsup);
+//                    }
+//                    else if (line == "peace") {
+//                        img_view.setImageResource(R.drawable.peace_hand_sign);
+//                    }else if (line == "punch"){
+//                        img_view.setImageResource(R.drawable.punch_fist);
+//                    }
                 }
                 catch(IOException i)
                 {
@@ -94,7 +95,7 @@ public class Client extends AppCompatActivity {
         // close the connection
         try
         {
-            input.close();
+            in.close();
             out.close();
             socket.close();
         }
@@ -106,6 +107,6 @@ public class Client extends AppCompatActivity {
 
     public static void main(String args[])
     {
-        Client client = new Client("10.42.0.1",41029);
+        Client client = new Client("10.42.0.1",50001);
     }
 }
